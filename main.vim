@@ -3,10 +3,10 @@
 
 
 " Make sure dependencies are installed:
-source ~/.vim/rc/autoinstall.vim
+source ~/.vim/autoinstall.vim
 
 " Load helper functions:
-source ~/.vim/rc/util.vim
+source ~/.vim/util.vim
 
 " Plugins:
 call plug#begin('~/.vim/plugged')
@@ -60,26 +60,26 @@ nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 
-source ~/.vim/rc/update.vim
-source ~/.vim/rc/settings.vim
+source ~/.vim/update.vim
+source ~/.vim/settings.vim
 
 call arpeggio#load()
 
 filetype plugin indent on
 
-source ~/.vim/rc/commands.vim
-source ~/.vim/rc/nerdtree.vim
-source ~/.vim/rc/undo.vim
-source ~/.vim/rc/theme.vim
-source ~/.vim/rc/keybinds.vim
-source ~/.vim/rc/template.vim
-source ~/.vim/rc/snippet.vim
+source ~/.vim/commands.vim
+source ~/.vim/nerdtree.vim
+source ~/.vim/undo.vim
+source ~/.vim/theme.vim
+source ~/.vim/keybinds.vim
+source ~/.vim/template.vim
+source ~/.vim/snippet.vim
 
 for f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')
 	exe 'source' f
 endfor
 
-source ~/.vim/rc/splash.vim
+source ~/.vim/splash.vim
 
 
 
