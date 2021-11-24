@@ -17,8 +17,10 @@ endif
 
 " <leader>n or w+n  for nerdtree
 map <Leader>n :NERDTreeToggle<CR>
-Arpeggio inoremap wn :NERDTreeToggle<CR>
-Arpeggio nnoremap wn :NERDTreeToggle<CR>
+if exists("*Arpeggio")
+	Arpeggio inoremap wn :NERDTreeToggle<CR>
+	Arpeggio nnoremap wn :NERDTreeToggle<CR>
+endif
 
 map <Leader>w :w<CR>
 
