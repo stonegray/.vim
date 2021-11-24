@@ -63,7 +63,10 @@ nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 source ~/.vim/update.vim
 source ~/.vim/settings.vim
 
-call arpeggio#load()
+" Provide fallback when not installed:
+if exists('*arpeggio#load')
+	call arpeggio#load()
+endif
 
 filetype plugin indent on
 

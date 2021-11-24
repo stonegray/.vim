@@ -1,25 +1,24 @@
 " Key bindings
 
-
 " Plugin-specific bindings are in ./plugins, except for chorded 
 " keys.
-
-" Chorded:
 
 " Space as leader:
 let mapleader=" "
 noremap <Space> <Nop>
 
 " Use k+j as <ESC>
-" Relaxed timing for the kj mapping: 
-call arpeggio#map('i', '', 130, 'jk', '<Esc>')
-"call arpeggio#map('i', '', 130, 'wq', ':wq')
+if exists("*arpeggio#map")
+	call arpeggio#map('i', '', 130, 'jk', '<Esc>')
+else
+	" fallback if plugins aren't available
+	imap kj <Esc>
+endif
 
 " <leader>n or w+n  for nerdtree
 map <Leader>n :NERDTreeToggle<CR>
 Arpeggio inoremap wn :NERDTreeToggle<CR>
 Arpeggio nnoremap wn :NERDTreeToggle<CR>
-
 
 map <Leader>w :w<CR>
 
@@ -29,7 +28,6 @@ map <Leader>w :w<CR>
 command W w !sudo tee % > /dev/null
 " Q iS nOt aN eDiToR cOmMaNd
 command Q q
-
 
 " Toggle relnumber
 nnoremap <leader>f :call RelToggle()<cr>
@@ -41,10 +39,8 @@ function! RelToggle()
 	endif
 endfunction
 
-
 "" Next tab with t
 map <Leader>t :tabnext <return>
-
 
 " Use :gs to open Gstatus on right side of screen
 command Gitv vertical belowright Git
