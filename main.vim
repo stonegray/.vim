@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'kevinoid/vim-jsonc'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm install'}
 
 " Temporary fix until I find out why:
 if filereadable('~/.vim/plugged/coc.nvim/build/index.js')
@@ -78,7 +78,7 @@ source ~/.vim/keybinds.vim
 source ~/.vim/template.vim
 source ~/.vim/snippet.vim
 
-for f in split(glob('~/.vim/rc/plugins/*.vim'), '\n')
+for f in split(glob('~/.vim/plugins/*.vim'), '\n')
 	exe 'source' f
 endfor
 
