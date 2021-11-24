@@ -10,7 +10,7 @@ function s:dlplug()
 endfunction
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-	call s:dlplug();
+	call s:dlplug()
 endif
 
 " Check for partial or cleaned install:
