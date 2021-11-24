@@ -1,0 +1,15 @@
+
+{
+	// es:
+	"javascript.suggest.names": false,
+	"typescript.suggest.enabled": false,
+	"tsserver.implicitProjectConfig.checkJs": true,
+	"languageserver": {
+		"bash": {
+			"command": "bash-language-server",
+			"args": ["start"],
+			"filetypes": ["sh","bash","command"],
+			"ignoredRootPaths": ["~"]
+		}
+	}
+}
