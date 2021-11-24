@@ -22,7 +22,8 @@ set textwidth=80
 set noexpandtab
 set autoindent
 set smartindent
-set fileformat=unix
+" silent to prevent interfering with splash
+silent! set fileformat=unix
 set smarttab
 set cindent
 
