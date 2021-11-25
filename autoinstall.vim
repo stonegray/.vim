@@ -6,7 +6,9 @@
 function s:dlplug()
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	if exists('*PlugInstall')
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	endif
 endfunction
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -14,7 +16,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " Check for partial or cleaned install:
-if !isdirectory(glob('~/.vim/plugged/'))
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"if !isdirectory(glob('~/.vim/plugged/'))
+"	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
 

@@ -1,20 +1,27 @@
 " Stone's 2021 Vim Config
 " -----------------------------
 
-
 " Make sure dependencies are installed:
 source ~/.vim/autoinstall.vim
 
 " Load helper functions:
 source ~/.vim/util.vim
 
+function! PostinstallCoc(info)
+	echohl None
+	echo " - Automatically finishing coc.nvim install using npm (yarn if available)"
+	silent !cd ~/.vim/plugged/coc.nvim; npm install
+	syntax on
+	"call system("cd ~/.vim/plugged/coc.nvim; npm install")
+endfunction
+
 " Plugins:
 call plug#begin('~/.vim/plugged')
 
-Plug 'kevinoid/vim-jsonc'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm install'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': function('PostinstallCoc')}
 
+Plug 'kevinoid/vim-jsonc'
+"
 " Temporary fix until I find out why:
 if filereadable('~/.vim/plugged/coc.nvim/build/index.js')
         echo 'Broken coc.nvim, run yarn again' 
@@ -53,6 +60,107 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
+function! Load()
+
+	source ~/.vim/update.vim
+	source ~/.vim/settings.vim
+
+	" Provide fallback when not installed:
+	call arpeggio#load()
+
+	filetype plugin indent on
+
+	source ~/.vim/commands.vim
+	source ~/.vim/nerdtree.vim
+	source ~/.vim/undo.vim
+	source ~/.vim/theme.vim
+	source ~/.vim/keybinds.vim
+	source ~/.vim/template.vim
+	source ~/.vim/snippet.vim
+
+	for f in split(glob('~/.vim/plugins/*.vim'), '\n')
+		exe 'source' f
+	endfor
+
+	source ~/.vim/splash.vim
+
+endfunction
+
+
+" Check for first install:
+if !isdirectory(glob('~/.vim/plugged/'))
+	"autocmd VimEnter * PlugInstall --sync 
+
+	" Text can bleed through for some reason unless this is set
+	" TODO conditionally run based on $TERM
+	echohl None
+	redraw
+	
+	
+	" Use a fullscreen window for this one:
+	let g:plug_window= "botleft " + winheight(0) + "new"
+	PlugInstall --sync
+	unlet g:plug_window
+
+	" We can't reload here, as it would cause a redefinition
+	" of FirstInstall(), so set a flag and do it later:
+	let g:needsReload=1
+
+	" Create new and close old window:
+	enew
+	call win_execute(0, 'close')
+	
+	call append('$', "")
+	"call append('$', ' vim' . GetVimVersion())
+	call append('$', '  Welcome to Vim')
+	call append('$', "")
+	call append('$', "  running stone's vimrc v.2.0.2")
+	call append('$', "")
+	call append('$', " ")
+
+	" ... and set some options for it
+	setlocal
+		\ nocursorcolumn
+		\ nocursorline
+		\ nolist
+		\ nonumber
+		\ foldcolumn=0
+		\ nofoldenable
+		\ noswapfile
+		\ norelativenumber
+		\ bufhidden=wipe
+		\ buftype=nofile
+		\ nobuflisted
+                \ nospell
+		\ ft=help
+		\ stl=
+		\ scr=0
+		\ mouse=
+	
+	" is this a bug? hide cursor by telling vim there's no show command:
+	setlocal t_ve=
+
+	" No modifications to this buffer
+	setlocal nomodifiable nomodified readonly
+
+	" When we go to insert mode start a new buffer, and start insert
+	nnoremap <buffer><silent> <CR> :q | set t_ve&vim
+	nnoremap <buffer><silent> e :enew<CR> | set t_ve&vim
+	nnoremap <buffer><silent> i :enew <bar> startinsert<CR> | setlocal t_ve&vim | setlocal nomodified
+	nnoremap <buffer><silent> o :enew <bar> startinsert<CR> | setlocal t_ve&vim | setlocal nomodified
+
+	call indent_guides#disable()
+
+	redraw
+	source $MYVIMRC
+	redraw
+endif
+
+if isdirectory(glob('~/.vim/plugged/'))
+	call Load()
+endif
+
+" Not sure why this is here, TODO move it:
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
@@ -60,31 +168,4 @@ nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 
-source ~/.vim/update.vim
-source ~/.vim/settings.vim
 
-" Provide fallback when not installed:
-if exists('*arpeggio#load')
-	call arpeggio#load()
-endif
-
-filetype plugin indent on
-
-source ~/.vim/commands.vim
-source ~/.vim/nerdtree.vim
-source ~/.vim/undo.vim
-source ~/.vim/theme.vim
-source ~/.vim/keybinds.vim
-source ~/.vim/template.vim
-source ~/.vim/snippet.vim
-
-for f in split(glob('~/.vim/plugins/*.vim'), '\n')
-	exe 'source' f
-endfor
-
-source ~/.vim/splash.vim
-
-
-
-
-"noremenu PopUp.Delete\ Rows :<c-u>g/\<<c-r><c-w>\>/d<cr>
