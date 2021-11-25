@@ -82,5 +82,4 @@ fun! Start()
 
 endfun
 
-
 autocmd VimEnter * call Start()
