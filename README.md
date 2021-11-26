@@ -1,6 +1,7 @@
 # .vim
 
-### 
+![](https://gist.githubusercontent.com/stonegray/35673fda8c406169c32bf416748739b3/raw/6fe02903917e1dfcc45ae02e48b7952ebb0ade57/screenshot.png)
+
 
 This repository contains my current `neovim` setup. It should be compatible with the latest versions of `neovim` and `vim`. 
 
@@ -13,6 +14,13 @@ Features:
 - Much more...
 
 
+
+### Requirements
+
+- `vim` 8.2+ or `nvim` 0.5+
+- `node`/`npm`, `yarn` recommended
+
+This rc is mostly used on macOS, although is expected to work fine on *nix. Windows support 
 
 
 
@@ -50,3 +58,4 @@ source ~/.vim/main.vim
 
 
 
+:wq
