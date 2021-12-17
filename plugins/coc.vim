@@ -1,3 +1,22 @@
+
+" Auto install plugins:
+let g:coc_global_extensions = [
+	\'coc-calc', 
+	\'coc-emoji', 
+	\'coc-eslint', 
+	\'coc-explorer', 
+	\'coc-fzf-preview',
+	\'coc-gist', 
+	\'coc-git', 
+	\'coc-json', 
+	\'coc-sh', 
+	\'coc-snippets',
+	\'coc-tsserver', 
+	\'coc-yaml', 
+	\'coc-lightbulb', 
+	\'coc-html', 
+	\ ]
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
