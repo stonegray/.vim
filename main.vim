@@ -10,20 +10,20 @@ source ~/.vim/util.vim
 function! PostinstallCoc(info)
 	echohl None
 	echo " - Automatically finishing coc.nvim install using npm (yarn if available)"
-	silent !cd ~/.vim/plugged/coc.nvim; npm install
+	silent !cd ~/.vim/pdata/coc.nvim; npm install
 	syntax on
-	"call system("cd ~/.vim/plugged/coc.nvim; npm install")
+	"call system("cd ~/.vim/pdata/coc.nvim; npm install")
 endfunction
 
 " Plugins:
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/pdata')
 
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': function('PostinstallCoc')}
 
 Plug 'kevinoid/vim-jsonc'
 "
 " Temporary fix until I find out why:
-if filereadable('~/.vim/plugged/coc.nvim/build/index.js')
+if filereadable('~/.vim/pdata/coc.nvim/build/index.js')
         echo 'Broken coc.nvim, run yarn again' 
 endif
 
@@ -58,6 +58,9 @@ Plug 'luochen1990/rainbow'
 Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
 call plug#end()
 
 function! Load()
@@ -75,7 +78,6 @@ function! Load()
 	source ~/.vim/undo.vim
 	source ~/.vim/theme.vim
 	source ~/.vim/keybinds.vim
-	source ~/.vim/template.vim
 	source ~/.vim/snippet.vim
 
 	for f in split(glob('~/.vim/plugins/*.vim'), '\n')
@@ -88,7 +90,7 @@ endfunction
 
 
 " Check for first install:
-if !isdirectory(glob('~/.vim/plugged/'))
+if !isdirectory(glob('~/.vim/pdata/'))
 	"autocmd VimEnter * PlugInstall --sync 
 
 	" Text can bleed through for some reason unless this is set
@@ -156,7 +158,7 @@ if !isdirectory(glob('~/.vim/plugged/'))
 	redraw
 endif
 
-if isdirectory(glob('~/.vim/plugged/'))
+if isdirectory(glob('~/.vim/pdata/'))
 	call Load()
 endif
 

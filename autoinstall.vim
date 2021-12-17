@@ -16,7 +16,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " Check for partial or cleaned install:
-"if !isdirectory(glob('~/.vim/plugged/'))
+"if !isdirectory(glob('~/.vim/pdata/'))
 "	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "endif
 

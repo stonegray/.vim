@@ -2,5 +2,6 @@ backup/*
 swap/*
 undo/*
 plugged/*
+pdata/*
 autoload/*
 .netrwhist

@@ -1,0 +1,17 @@
+# generic
+*.a
+*.dylib
+*.ko
+*.la
+*.lib
+*.lo
+*.log
+*.o
+*.obj
+*.so
+*.so.*
+*.tmp
+*~
+.DS_Store
+
+%HERE%
