@@ -62,4 +62,9 @@ endif
 " viewer whens streaming, but somewhat helpful nontheless
 set showcmd
 
+set cmdheight=2
 
+" don't pass messages to ins-completion-menu, coc
+set shortmess+=c
+
+set signcolumn=number
