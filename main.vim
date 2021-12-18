@@ -78,7 +78,6 @@ function! Load()
 	source ~/.vim/undo.vim
 	source ~/.vim/theme.vim
 	source ~/.vim/keybinds.vim
-	source ~/.vim/snippet.vim
 
 	for f in split(glob('~/.vim/plugins/*.vim'), '\n')
 		exe 'source' f
