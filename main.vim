@@ -55,8 +55,6 @@ Plug 'raimondi/delimitmate'
 Plug 'chriskempson/base16-vim'
 Plug 'luochen1990/rainbow'
 
-Plug 'ludovicchabant/vim-gutentags'
-
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'Shougo/neco-vim'
