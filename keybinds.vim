@@ -44,11 +44,5 @@ endfunction
 "" Next tab with t
 map <Leader>t :tabnext <return>
 
-" Use :gs to open Gstatus on right side of screen
-command Gitv vertical belowright Git
-command Gitb botright Git
-cnoreabbrev gs Gitv
-map <Leader>g :gs<CR>
-cnoreabbrev ghs Gitb
 
 

@@ -12,7 +12,7 @@ let base16colorspace=256
 
 
 " Try to set colorscheme
-silent! colorscheme base16-google-dark
+silent! colorscheme codedark
 
 let g:airline_theme='base16_google'
 
