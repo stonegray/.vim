@@ -66,11 +66,6 @@ source ~/.vim/undo.vim
 source ~/.vim/theme.vim
 source ~/.vim/keybinds.vim
 
-for f in split(glob('~/.vim/plugins/*.vim'), '\n')
-	exe 'source' f
-endfor
-
-
 
 " Not sure why this is here, TODO move it:
 let g:tmux_navigator_no_mappings = 1
