@@ -7,21 +7,24 @@ set rtp +=~/.vim/
 " Plugins:
 call plug#begin('~/.vim/pdata')
 
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'neovim/nvim-lspconfig'
+if has('nvim-0.7')
 
-" Autocompletion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
+	Plug 'williamboman/nvim-lsp-installer'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'neovim/nvim-lspconfig'
 
-"  Snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
+	" Autocompletion
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-nvim-lua'
+
+	"  Snippets
+	Plug 'L3MON4D3/LuaSnip'
+	Plug 'rafamadriz/friendly-snippets'
+
 
 Plug 'folke/lsp-colors.nvim'
 
@@ -36,30 +39,29 @@ Plug 'folke/trouble.nvim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 
-Plug 'tomasiser/vim-code-dark'
-
 Plug 'stevearc/dressing.nvim'
-call plug#end()
-
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-
-if !has("nvim")
-	print "Warning: Please use nvim to enable all features."
 
 endif
 
-lua <<EOF
+Plug 'tomasiser/vim-code-dark'
 
-require 'lsp'
-
-EOF
-
-"source ~/.vim/update.vim
-source ~/.vim/settings.vim
+call plug#end()
 
 filetype plugin indent on
+
+set foldmethod=expr
+
+if has('nvim-0.7')
+	set foldexpr=nvim_treesitter#foldexpr()
+	lua require('nvim-init')
+else
+	echo "Warning: Please use nvim to enable all features."
+
+endif
+
+
+source ~/.vim/settings.vim
+
 
 source ~/.vim/commands.vim
 source ~/.vim/undo.vim
