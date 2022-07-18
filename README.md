@@ -4,6 +4,10 @@
 
 ![](https://shields.io/tokei/lines/github/stonegray/.vim) ![](https://shields.io/static/v1?label=platform&message=linux%20|%20macOS&color=lightgray) ![](https://shields.io/static/v1?label=licence&message=MIT&color=green)
 
+<center>
+<table><tr><td><i>⚠️ This repo is archived. I'm switched over to Neovim and suggest you do the same. https://github.com/stonegray/.nvim</i></td></tr><tr></tr></table>
+</center>
+
 ![](https://gist.githubusercontent.com/stonegray/35673fda8c406169c32bf416748739b3/raw/6fe02903917e1dfcc45ae02e48b7952ebb0ade57/screenshot.png)
 
 This repository contains my current configuration for `neovim` and `vim`.  
